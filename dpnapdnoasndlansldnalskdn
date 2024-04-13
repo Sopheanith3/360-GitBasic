@@ -1,0 +1,593 @@
+[33mcommit 32ab714f7b9ec23d56d7867def1d343131c84f2c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Peter Madin <petermadin@yahoo.com>
+Date:   Fri Apr 12 22:21:41 2024 -0700
+
+    Adding peter files to main
+
+[1mdiff --git a/360-GitBasic b/360-GitBasic[m
+[1mnew file mode 160000[m
+[1mindex 0000000..c678822[m
+[1m--- /dev/null[m
+[1m+++ b/360-GitBasic[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mSubproject commit c678822f2940b38c3c92ed9c67f470d5013c3302[m
+[1mdiff --git a/Apple.py b/Apple.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..12e292a[m
+[1m--- /dev/null[m
+[1m+++ b/Apple.py[m
+[36m@@ -0,0 +1,7 @@[m
+[32m+[m[32mrail = 9[m
+[32m+[m[32mwhile rail >= 9:[m
+[32m+[m[32m    rail = rail + 1[m
+[32m+[m[32m    if rail % 4 == 1:[m
+[32m+[m[32m        rail = rail // 3[m
+[32m+[m[32m    print(rail)[m
+[32m+[m[41m        [m
+[1mdiff --git a/Boxes.py b/Boxes.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..49b0901[m
+[1m--- /dev/null[m
+[1m+++ b/Boxes.py[m
+[36m@@ -0,0 +1,90 @@[m
+[32m+[m
+[32m+[m[32m# Boxes.py[m
+[32m+[m[41m    [m
+[32m+[m[32m# Demonstration of Input/Processing/Output[m
+[32m+[m[32m# Calculates some characteristics of a cardboard[m
+[32m+[m[32m# box given user specifications.[m
+[32m+[m
+[32m+[m[32m# Updated to change variable naming style.[m
+[32m+[m
+[32m+[m[32m# CSC 110[m
+[32m+[m[32m# 2/2/13[m
+[32m+[m
+[32m+[m[32m# CONSTANTS -- information we already know[m
+[32m+[m[32mCARDBOARD_COST_PER_SQUARE_METER = 1.25  # in dollars per sq. meter[m
+[32m+[m[32mCARDBOARD_THICKNESS = 0.5  # centimeters[m
+[32m+[m[32mSQ_CM_PER_SQ_METER = 10000.0  # conversion factor[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[32m# INPUT section -- get information from the user (floating-point numbers)[m
+[32m+[m[32mmessage = 'Please enter the \'height\' of your box in centimeters.\nThe ' \[m
+[32m+[m[32m          +'height is the distance between the ends of the box that open: '[m
+[32m+[m[32mheight = float(input(message))[m
+[32m+[m[32mmessage = '\nNow enter the \'length\' of your box in centimeters.\nThe ' \[m
+[32m+[m[32m          + 'length is the longer of the two remaining dimensions: '[m
+[32m+[m[32mlength = float(input(message))[m
+[32m+[m[32mmessage = '\nFinally, enter the last dimension of your box, ' \[m
+[32m+[m[32m          + '\nits \'width\', also in centimeters: '[m
+[32m+[m[32mwidth = float(input(message))[m
+[32m+[m
+[32m+[m
+[32m+[m[32m# PROCESSING section -- perform calculations[m
+[32m+[m[41m    [m
+[32m+[m[32mexternal_volume = length * width * height;  # cubic centimeters[m
+[32m+[m[41m    [m
+[32m+[m[32minternal_volume = (length - 2 * CARDBOARD_THICKNESS) \[m
+[32m+[m[32m                  * (width - 2 * CARDBOARD_THICKNESS) \[m
+[32m+[m[32m                  * (height - 4 * CARDBOARD_THICKNESS)  # why 4?[m
+[32m+[m[41m                         [m
+[32m+[m[32marea_of_sides = (2 * length * height) + (2 * width * height)[m
+[32m+[m[32m       # 2 of each kind of "side"[m
+[32m+[m[32m       # Notice this could be reduced to:[m
+[32m+[m[32m       #   area_of_sides = 2 * (length + width) * height[m
+[32m+[m
+[32m+[m[32marea_of_flaps = (4 * length * (width / 2)) + (4 * width * (width / 2))[m
+[32m+[m[32m       # This could be reduced as well -- to what??[m
+[32m+[m
+[32m+[m[32mtotal_cardboard_area = area_of_sides + area_of_flaps  # area in square cm[m
+[32m+[m
+[32m+[m[32mbox_cost = total_cardboard_area / SQ_CM_PER_SQ_METER \[m
+[32m+[m[32m           * CARDBOARD_COST_PER_SQUARE_METER[m
+[32m+[m[32m       # Notice this involves converting from square cm to square meters[m
+[32m+[m[41m       [m
+[32m+[m
+[32m+[m[32m# OUTPUT section -- show results[m
+[32m+[m[41m    [m
+[32m+[m[32mprint('\n\nHere is your quotation:\n')[m
+[32m+[m[32mprint('Box length (cm.): ' + str(length))[m
+[32m+[m[32mprint('Box width (cm.): ' + str(width))[m
+[32m+[m[32mprint('Box height (cm.): ' + str(height))[m
+[32m+[m[41m    [m
+[32m+[m[32mprint('External volume (cubic cm.): ' + str(external_volume))[m
+[32m+[m[32mprint('Internal volume (cubic cm.): ' + str(internal_volume))[m
+[32m+[m[32mprint('Cardboard area (square cm.): ' + str(total_cardboard_area))[m
+[32m+[m[41m                     [m
+[32m+[m[32mprint('\nYour cost per box is $' + format(box_cost, '.2f'))[m
+[32m+[m[32mprint('\nThank your for visiting the \'Boxes\' page.')[m
+[32m+[m[32mprint('We look forward to receiving your order!')[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32m# Documented Test Results:[m
+[32m+[m
+[32m+[m[32m# This program was tested using the following inputs:[m
+[32m+[m[32m# height = 33[m
+[32m+[m[32m# length = 22[m
+[32m+[m[32m# width = 11[m
+[32m+[m
+[32m+[m[32m# The results produced were:[m
+[32m+[m[41m    [m
+[32m+[m[32m# Box length (cm.): 22[m
+[32m+[m[32m# Box width (cm.): 11[m
+[32m+[m[32m# Box height (cm.): 33[m
+[32m+[m
+[32m+[m[32m# External volume (cubic cm.): 7986.0[m
+[32m+[m[32m# Internal volume (cubic cm.): 6510.0[m
+[32m+[m[32m# Cardboard area (square cm.): 2904.0[m
+[32m+[m
+[32m+[m[32m# Your cost per box is $0.36[m
+[32m+[m[41m    [m
+[32m+[m[32m# These results agree with hand calculations.[m
+[1mdiff --git a/Brick_Building.py b/Brick_Building.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..fefb166[m
+[1m--- /dev/null[m
+[1m+++ b/Brick_Building.py[m
+[36m@@ -0,0 +1,105 @@[m
+[32m+[m[32m# Peter Madin[m
+[32m+[m[32m# Section 03[m
+[32m+[m[32m# 04/27/20[m
+[32m+[m[32m# Assignment 2[m
+[32m+[m
+[32m+[m[32m# Bricks & Mortar[m
+[32m+[m
+[32m+[m[32m# Calculates the supplies and information of Brick & Mortar laying[m
+[32m+[m
+[32m+[m[32m# CONSTANTS == fixed numebers[m
+[32m+[m[32mBRICK_VOLUME = 0.00120705 # brick volume, includes mortar volume[m
+[32m+[m[32mBRICK_MASS = 2.3 # in kilograms[m
+[32m+[m[32mBRICK_COST = 0.65 # n dollars per brick[m
+[32m+[m[32mMORTAR_VOLUME = 0.025 # in m^3, mortar makes 15% of the volume in foundation[m
+[32m+[m[32mMORTAR_MASS = 43 # in kilograms[m
+[32m+[m[32mMORTAR_COST = 7.25 # in dollars per bag[m
+[32m+[m[32mMORTAR_PERCENT = 0.15 # percent of mortar in decimal form[m
+[32m+[m
+[32m+[m[32m# INPUTS == information the user put in[m
+[32m+[m[32mtext = '\nEnter the "length" of your brick foundation in meters: '[m
+[32m+[m[32mlength = float(input(text))[m
+[32m+[m
+[32m+[m[32mtext = '\nEnter the "width" of your brick foundation in meters: '[m
+[32m+[m[32mwidth = float(input(text))[m
+[32m+[m
+[32m+[m[32mtext = '\nEnter the "height" of your brick foundation in meters: '[m
+[32m+[m[32mheight = float(input(text))[m
+[32m+[m[41m    [m
+[32m+[m[32mtext = '\nEnter the "thickness" of your brick foundation in meters: '[m
+[32m+[m[32mthicc = float(input(text))[m
+[32m+[m
+[32m+[m[32m# PROCESSING == calculations preformed[m
+[32m+[m[32moverall_area = length * width # in meters cube[m
+[32m+[m
+[32m+[m[32menclosed_length = length - thicc * 2 # two sides of the length thickness[m
+[32m+[m
+[32m+[m[32menclosed_width = width - thicc * 2 # two sides of the width thickness[m
+[32m+[m
+[32m+[m[32menclosed_area = enclosed_length * enclosed_width # simplifies enclosed area[m
+[32m+[m
+[32m+[m[32mtotal_volume = (overall_area - enclosed_area) * height # total area in meters cube[m
+[32m+[m
+[32m+[m[32mwall_volume = length * height * thicc # the volume of the foundation/wall[m
+[32m+[m
+[32m+[m[32mnumber_of_bricks = total_volume / BRICK_VOLUME # calculates the amount of bricks[m
+[32m+[m[41m [m
+[32m+[m[32mbags_of_mortar = (MORTAR_PERCENT * total_volume) / MORTAR_VOLUME # amount of mortar need[m
+[32m+[m
+[32m+[m[32mtotal_mass = (number_of_bricks * BRICK_MASS) + (bags_of_mortar * MORTAR_MASS) # whole mass of everything[m
+[32m+[m
+[32m+[m[32mmaterials_cost = (number_of_bricks * BRICK_COST) + (bags_of_mortar * MORTAR_COST) # The cost of all items[m
+[32m+[m
+[32m+[m[32m# OUTPUTS == shown outcomes[m
+[32m+[m[32mprint('+-----------------------------------------------------------------------'\[m
+[32m+[m[32m      + '-------+')[m
+[32m+[m
+[32m+[m[32mprint('\n Here are your results:')[m
+[32m+[m[32mprint('\n Overall Area: (Square Meters): ' + format(overall_area, '.2f'))[m
+[32m+[m[32mprint('\n Enclosed Area: (Square Meters): ' + format(enclosed_area, '.2f'))[m
+[32m+[m[32mprint('\n Total Volume: (Cubic Meters): ' + format(total_volume, '.2f'))[m
+[32m+[m[32mprint('\n Number of Bricks: ' + format(number_of_bricks, '.0f'))[m
+[32m+[m[32mprint('\n Bags of Mortar: ' + format(bags_of_mortar, '.0f'))[m
+[32m+[m[32mprint('\n Total Mass: (Kilograms): ' + format(total_mass, '.2f'))[m
+[32m+[m[32mprint('\n Total Materials Cost: $' + format(materials_cost, '.2f'))[m
+[32m+[m
+[32m+[m[32m# DOCUMENTATION[m
+[32m+[m
+[32m+[m[32m# Program was tesd with two following inputs[m
+[32m+[m
+[32m+[m[32m# input one[m
+[32m+[m
+[32m+[m[32m# length = 12[m
+[32m+[m[32m# width = 9[m
+[32m+[m[32m# height = 2[m
+[32m+[m[32m# thickness = 1[m
+[32m+[m
+[32m+[m[32m# produced results[m
+[32m+[m
+[32m+[m[32m# Overall Area: 108.00[m[41m  [m
+[32m+[m[32m# Enclosed Area: 70.00[m
+[32m+[m[32m# Total Volume: 76.00[m
+[32m+[m[32m# Number of Bricks: 62963[m
+[32m+[m[32m# Bags of Mortar: 456[m
+[32m+[m[32m# Total Mass: 164423.87[m
+[32m+[m[32m# Materials Cost: 44232.23[m
+[32m+[m
+[32m+[m[32m# input two[m
+[32m+[m
+[32m+[m[32m# length = 24[m
+[32m+[m[32m# width = 7[m
+[32m+[m[32m# height = 3[m
+[32m+[m[32m# thickness = 1.5[m
+[32m+[m
+[32m+[m[32m# produced results[m
+[32m+[m
+[32m+[m[32m# Overall Area: 168.00[m[41m  [m
+[32m+[m[32m# Enclosed Area: 84.00[m
+[32m+[m[32m# Total Volume: 252.00[m
+[32m+[m[32m# Number of Bricks: 208773[m
+[32m+[m[32m# Bags of Mortar: 1512[m
+[32m+[m[32m# Total Mass: 545194.95[m
+[32m+[m[32m# Materials Cost: 146664.75[m
+[32m+[m
+[32m+[m[32m# These results were verified by hand, which produced successful calculations[m
+[32m+[m[32m# Additionally the results match to example instructions results[m
+[1mdiff --git a/Files.py b/Files.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5753778[m
+[1m--- /dev/null[m
+[1m+++ b/Files.py[m
+[36m@@ -0,0 +1,36 @@[m
+[32m+[m[32mdef main():[m
+[32m+[m[32m    # Ask user for file name and opens file[m
+[32m+[m[32m    user_input = (str(input('Type the file you want open(Include file extension name): ')))[m
+[32m+[m[32m    user_file = open(user_input, 'r') # Enter otherData.txt or data.txt[m
+[32m+[m[32m    even_file = open('even.txt', 'w')[m
+[32m+[m[32m    odd_file = open('odd.txt', 'w')[m
+[32m+[m[41m    [m
+[32m+[m[32m    print('Opening', user_input, 'file')[m
+[32m+[m[41m    [m
+[32m+[m[32m    # Initialize even sum[m
+[32m+[m[32m    even_sum = 0[m
+[32m+[m[32m    negative_count = 0[m
+[32m+[m[32m    # Reads the file[m
+[32m+[m[32m    for line in user_file:[m
+[32m+[m[32m        num = int(line)[m
+[32m+[m
+[32m+[m[32m        # Checks if the file numbers are even or odd[m
+[32m+[m[32m        if (num % 2) == 0:[m
+[32m+[m[32m            even_file.write(str(num) + '\n')[m
+[32m+[m[32m            even_sum += num[m
+[32m+[m[32m        else:[m
+[32m+[m[32m            odd_file.write(str(num) + '\n')[m
+[32m+[m[41m            [m
+[32m+[m[32m        # Counts how many negative numbers in file[m
+[32m+[m[32m        if num < 0:[m
+[32m+[m[32m            negative_count += 1[m
+[32m+[m[41m            [m
+[32m+[m[32m    user_file.close()[m
+[32m+[m[32m    even_file.close()[m
+[32m+[m[32m    odd_file.close()[m
+[32m+[m
+[32m+[m[32m    ## Outputs[m
+[32m+[m[32m    print('The sum of all even numbers in your file are:',even_sum)[m
+[32m+[m[32m    print('There are',negative_count,'odd numbers in your file')[m
+[32m+[m[41m    [m
+[32m+[m[32mmain()[m
+[1mdiff --git a/Functions and Parameters.py b/Functions and Parameters.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6669d21[m
+[1m--- /dev/null[m
+[1m+++ b/Functions and Parameters.py[m	
+[36m@@ -0,0 +1,30 @@[m
+[32m+[m[32mimport math[m
+[32m+[m
+[32m+[m[32mdef test(s,a, b):[m
+[32m+[m[32m    a = a + 1[m
+[32m+[m[32m    c = b + a * 2[m
+[32m+[m[32m    print(s, a, b, c)[m
+[32m+[m
+[32m+[m[32mdef main():[m
+[32m+[m[32m    num1 = 5[m
+[32m+[m[32m    num2 = 7[m[41m [m
+[32m+[m[32m    num3 = 3[m
+[32m+[m[32m    str1 = 'ate'[m
+[32m+[m
+[32m+[m[32m    test('apple', 2, 6)[m
+[32m+[m
+[32m+[m[32m    test('banana', num3, num1)[m
+[32m+[m
+[32m+[m[32m    test('cherry', num1, num3)[m
+[32m+[m[41m    [m
+[32m+[m[32m    test('d' + str1, num2 - num3, num3)[m
+[32m+[m[41m    [m
+[32m+[m[32m    test('elderberry', math.sqrt(16), num3)[m
+[32m+[m[41m    [m
+[32m+[m[32m    test('fig', math.sqrt(16) + 1, num3 - 1)[m
+[32m+[m
+[32m+[m[32m    print(str1, num1, num2, num3)[m
+[32m+[m
+[32m+[m[32mmain()[m
+[32m+[m
+[32m+[m
+[1mdiff --git a/Git-basics b/Git-basics[m
+[1mnew file mode 160000[m
+[1mindex 0000000..f26abb7[m
+[1m--- /dev/null[m
+[1m+++ b/Git-basics[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mSubproject commit f26abb7d46498d89babe6164a6601d1e685d1ebd[m
+[1mdiff --git a/List.py b/List.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5875d0e[m
+[1m--- /dev/null[m
+[1m+++ b/List.py[m
+[36m@@ -0,0 +1,31 @@[m
+[32m+[m[32mdef main():[m
+[32m+[m[32m    swap()[m
+[32m+[m[32m    strings = ['I','feel','like','a','Gucci','ad-lib','burr',][m
+[32m+[m[32m    print(strings)[m
+[32m+[m[32m    print(get_list(strings[:3]))[m
+[32m+[m[32m    print(strings)[m
+[32m+[m[32m    print(get_list(['It','go','right','foot','up','left','foot','slide',][:3]))[m
+[32m+[m
+[32m+[m[32mdef swap():[m
+[32m+[m[32m    list1 = [10,20,30,40][m
+[32m+[m[32m    print(list1)[m
+[32m+[m[32m    list1[0],list1[2] = list1[2], list1[0],[m
+[32m+[m[32m    # Either one works first one is in one line[m
+[32m+[m[32m    #list1[0] = 30[m
+[32m+[m[32m    #list1[2] = 10[m
+[32m+[m[32m    print(list1)[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[32m    list2 = [5,8,15,12,18][m
+[32m+[m[32m    print(list2)[m
+[32m+[m[32m    list2[2], list2[3] = list2[3], list2[2][m
+[32m+[m[32m    #list2[2] = 12[m
+[32m+[m[32m    #list2[3] = 15[m
+[32m+[m[32m    print(list2)[m
+[32m+[m
+[32m+[m[32mdef get_list(list_length):[m
+[32m+[m[32m    list_short = [][m
+[32m+[m[32m    for words in list_length:[m
+[32m+[m[32m        list_short = list_length[m
+[32m+[m[32m    return list_short[m
+[32m+[m[32mmain()[m
+[1mdiff --git a/Retirement_Planning_V2.py b/Retirement_Planning_V2.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..d1db6aa[m
+[1m--- /dev/null[m
+[1m+++ b/Retirement_Planning_V2.py[m
+[36m@@ -0,0 +1,76 @@[m
+[32m+[m[32m# Peter Madin 03[m
+[32m+[m[32m# 5/25/20[m
+[32m+[m[32m# Retirement_Planning_V2[m
+[32m+[m[32m#[m
+[32m+[m[32m# This progam creates a table using the users input as savings[m
+[32m+[m[32m# after that a preset amount of interest and age is calcuated for them[m
+[32m+[m
+[32m+[m[32m# CSC 110[m
+[32m+[m
+[32m+[m[32mdef main():[m
+[32m+[m[41m    [m
+[32m+[m[32m    ## Obtains And Validates Inputs[m
+[32m+[m[41m    [m
+[32m+[m[32m    print('Welcome User to the retirement plannting tool!')[m
+[32m+[m[32m    annual_limit = int(input('\nEnter annual savings (at least $100): $'))[m
+[32m+[m[32m    while annual_limit < 100:[m
+[32m+[m[32m        annual_limit = int(input('Try again (Annual savings must be >= $100): $'))[m
+[32m+[m[41m        [m
+[32m+[m[32m    amount_saved = annual_limit # initialize staring value[m
+[32m+[m[41m    [m
+[32m+[m[32m    ## Header[m
+[32m+[m[32m    print('Retirement Savings Table:')[m
+[32m+[m[32m    print('\nStarting     Assumed Interest Rate')[m
+[32m+[m[32m    print('  Age           4%           6%           8%          10%')[m
+[32m+[m
+[32m+[m[32m    ## Neasted Loops[m
+[32m+[m[32m    #  The first set of loops creates the age list and prints[m
+[32m+[m[32m    #  them plus it assigns the age for calc_final_balance.[m
+[32m+[m[32m    #  the seoond loop gets it interest assigned for calc_final_balance[m
+[32m+[m[32m    for age in range(20, 70, 5):[m
+[32m+[m[32m        print(format(age, '5.0f'), end ='') # initialization[m
+[32m+[m[32m        starting_age = age # assigns age through loop[m
+[32m+[m[32m        for interest in range(4, 11, 2):[m
+[32m+[m[32m            interest_rate = interest # assigns interest through loop[m
+[32m+[m[32m            print('  $' + format(calc_final_balance(starting_age, amount_saved, interest_rate),'10.2f'), end ='')[m
+[32m+[m[32m        print()[m
+[32m+[m
+[32m+[m[32m    print('\nWhen are You going to start saving for retiremeint?')[m
+[32m+[m
+[32m+[m[32m## Function calculates the final balance until target age of 70 is reached[m
+[32m+[m[32mdef calc_final_balance(starting_age, amount_saved, interest_rate):[m
+[32m+[m[32m    ## Stimulates retirement changes until target age of 70[m
+[32m+[m
+[32m+[m[32m    age = starting_age # initialize counter[m
+[32m+[m[32m    balance = 0 # initialize starting balance[m
+[32m+[m[32m    interest_rate = float((interest_rate) / 100) # converts interest rate to decimal[m
+[32m+[m[32m    interest_rate += 1 # yearly increase of interest_rate[m[41m [m
+[32m+[m
+[32m+[m
+[32m+[m[32m    # loop contains buffer for logical savings[m
+[32m+[m[32m    while age < 70 and age >= 18: # loop for each year[m
+[32m+[m[32m        age = age + 1#age += 1 # iterates the age until age 70[m
+[32m+[m[32m        balance += amount_saved[m
+[32m+[m[32m        balance *= interest_rate # gets the interest rate per year and multiplies[m
+[32m+[m[32m    return balance#returns the final calulated balance[m
+[32m+[m
+[32m+[m[32mmain()[m
+[32m+[m
+[32m+[m[32m## DOCUMENTATION[m
+[32m+[m[32m#[m
+[32m+[m[32m## TEST 01[m
+[32m+[m[32m# Input: $3000[m
+[32m+[m[32m# Output: Age 60 with 4% = $37459.05[m
+[32m+[m[32m#         Age 65 with 10% = $20146.83[m
+[32m+[m[32m#[m
+[32m+[m[32m## TEST 02[m
+[32m+[m[32m# Input: $420[m
+[32m+[m[32m# Output: Age 60 with 4% = $5244.27[m
+[32m+[m[32m#         Age 65 with 10% = $2820.56[m
+[32m+[m[32m#[m
+[32m+[m[32m## TEST 03[m
+[32m+[m[32m# Input: $1337[m
+[32m+[m[32m# Output: Age 60 with 4% = $16694.25[m
+[32m+[m[32m#         Age 65 with 10% = $8978.77[m
+[32m+[m
+[32m+[m[32m# Tested input were calculated and verified by hand[m
+[1mdiff --git a/credit_card.py b/credit_card.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c01ecf9[m
+[1m--- /dev/null[m
+[1m+++ b/credit_card.py[m
+[36m@@ -0,0 +1,61 @@[m
+[32m+[m[32m# credit_card.py[m
+[32m+[m[32m#[m
+[32m+[m[32m# How long will it take to pay off a credit card balance??[m
+[32m+[m[32m# This program makes use of a loop to perform a SIMULATION[m
+[32m+[m[32m# of a real-world situation.[m
+[32m+[m
+[32m+[m[32m# CSC 110[m
+[32m+[m[32m# Fall 2011[m
+[32m+[m
+[32m+[m[32m### Get and validate inputs[m
+[32m+[m
+[32m+[m[32minterest_multiplier = float(input('Enter an ANNUAL INTEREST RATE ' \[m
+[32m+[m[32m    + 'as a PERCENTAGE, >= zero: ')) / 1200.0[m
+[32m+[m[32mwhile interest_multiplier < 0:[m
+[32m+[m[32m    interest_multiplier = float(input('TRY AGAIN -- annual ' \[m
+[32m+[m[32m        + 'rate must be >= zero: ')) / 1200.0[m
+[32m+[m
+[32m+[m[32minitial_balance = float(input('Enter an INITIAL ACCOUNT BALANCE ' \[m
+[32m+[m[32m    + 'in dollars, >= 100: '))[m
+[32m+[m[32mwhile initial_balance < 100:[m
+[32m+[m[32m    initial_balance = float(input('TRY AGAIN -- initial balance ' \[m
+[32m+[m[32m        + 'must be >= 100: '))[m
+[32m+[m
+[32m+[m[32mpayment = float(input('Enter the MONTHLY PAYMENT to be made, ' \[m
+[32m+[m[32m    + 'in dollars, >= 10: '))[m
+[32m+[m[32mwhile payment < 10:[m
+[32m+[m[32m    payment = float(input('TRY AGAIN -- monthly payment ' \[m
+[32m+[m[32m        + 'must be >= 10: '))[m
+[32m+[m
+[32m+[m[32m### Simulate account changes until the account is paid in full[m
+[32m+[m
+[32m+[m[32mbalance = initial_balance # initialize accumulator[m
+[32m+[m[32mmonths = 0                # initialize counter[m
+[32m+[m[32mtotal_payments = 0        # initialize accumulator;[m
+[32m+[m
+[32m+[m[32m# NOTICE that the loop continues as long as the balance is greater than[m
+[32m+[m[32m#        zero, BUT not longer than 1200 months -- a condition necessary[m
+[32m+[m[32m#        to prevent an infinite loop if the payment is too low.[m
+[32m+[m[32mwhile balance > 0 and months < 1200:[m
+[32m+[m[32m    balance = balance + (balance * interest_multiplier)[m
+[32m+[m[32m    balance -= payment[m
+[32m+[m[32m    total_payments += payment[m
+[32m+[m[32m    months += 1[m
+[32m+[m[32m    # print(balance)  # use to TRACE loop operation[m
+[32m+[m
+[32m+[m[32myears = months // 12  # integer division on purpose -- whole years only[m
+[32m+[m[32mmonths = months % 12[m
+[32m+[m
+[32m+[m
+[32m+[m[32m### Show results[m
+[32m+[m
+[32m+[m[32mprint('\nAfter ' + str(years) + ' years and ' + str(months) + ' months')[m
+[32m+[m[32mif balance <= 0:[m
+[32m+[m[32m    print('your debt is paid.')[m
+[32m+[m[32m    total_payments += balance # corrects for any excess payment (balance <= 0)[m
+[32m+[m[32m    print('\nTotal interest = $'[m
+[32m+[m[32m          + format((total_payments - initial_balance),',.2f') + '.')[m
+[32m+[m[32melse:[m
+[32m+[m[32m    print('your debt is still not paid off!')[m
+[32m+[m[32m    print('Remaining balance = $' + format(balance, ',.2f') + '.')[m
+[32m+[m[32mprint('\nTotal payments = $' + format(total_payments, ',.2f') + '.\n')[m
+[1mdiff --git a/cube_root.py b/cube_root.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6ef092e[m
+[1m--- /dev/null[m
+[1m+++ b/cube_root.py[m
+[36m@@ -0,0 +1,83 @@[m
+[32m+[m
+[32m+[m[32m# Sample program illustrating programmer-defined functions[m
+[32m+[m[32m# along with code that calls the functions[m
+[32m+[m[32m#[m
+[32m+[m[32m# The 'cube_root' function uses a 'return' statement.  Its[m
+[32m+[m[32m# only job is to calculate and "return" the cube root of a[m
+[32m+[m[32m# number.  It does not print anything.  Notice that statements[m
+[32m+[m[32m# that "call" the 'cube_root' function need to USE the value[m
+[32m+[m[32m# returned.  They can do this by a) saving it in a variable,[m
+[32m+[m[32m# b) using it in a 'print' statement, or c) using the value in[m
+[32m+[m[32m# ANY general expression.  Imagine that the value returned by[m
+[32m+[m[32m# the function REPLACES the function call wherever it occurs.[m
+[32m+[m[32m# This is EXACTLY the same way you use built-in functions like[m
+[32m+[m[32m# 'input()', 'abs()', 'round()', etc.[m
+[32m+[m[32m#[m
+[32m+[m[32m# The 'show_table' function does NOT use a 'return' statement.[m
+[32m+[m[32m# It's job is to PRINT a table.  Different functions may be[m
+[32m+[m[32m# used in different ways.[m
+[32m+[m[32m#[m
+[32m+[m[32m# CSC 110[m
+[32m+[m[32m# Winter 2013[m
+[32m+[m
+[32m+[m[32m# The cube_root function calculates and RETURNS the cube root[m
+[32m+[m[32m# of a number.  If the value of 'x' is negative, a negative[m[41m [m
+[32m+[m[32m# real number is returned.[m
+[32m+[m[32mdef cube_root(x):[m
+[32m+[m[32m    if x < 0:[m
+[32m+[m[32m        result = -( (-x)**(1.0/3.0) )[m
+[32m+[m[32m    else:[m
+[32m+[m[32m        result = x ** (1.0/3.0)[m
+[32m+[m[32m    return result[m
+[32m+[m
+[32m+[m[32m# Main program[m
+[32m+[m[32mdef main():[m
+[32m+[m[32m    print('Let\'s examine the cube roots of some numbers.\n')[m
+[32m+[m
+[32m+[m[32m    # CALL the function and save the value returned in a variable:[m
+[32m+[m[32m    num = 27[m
+[32m+[m[32m    root = cube_root(num)  # The ARGUMENT is a variable[m
+[32m+[m[32m    print('Cube root of ' + str(num) + ' is ' + format(root, '.1f'))[m
+[32m+[m[32m    root = cube_root(num + 98)  # The argument is an expression[m
+[32m+[m[32m    print(root)[m
+[32m+[m
+[32m+[m[32m    # Use the function call directly in a 'print' statement:[m
+[32m+[m[32m    print('Cube root of ' + str(num) + ' is ' + format(cube_root(num), '.1f'))[m
+[32m+[m
+[32m+[m[32m    # Use multiple function calls in an expression:[m
+[32m+[m[32m    print('The answer is', cube_root(8) + cube_root(1000) / 2)[m
+[32m+[m
+[32m+[m[32m    # Here is a table of some cube roots:[m
+[32m+[m[32m    print('\n     n     cube_root(n)')  # print header row[m
+[32m+[m[32m    num = 8[m
+[32m+[m[32m    print(format(num, '8.1f'), format(cube_root(num), '10.3f'))[m
+[32m+[m[32m    num = 31[m
+[32m+[m[32m    print(format(num, '8.1f'), format(cube_root(num), '10.3f'))[m
+[32m+[m[32m    num = 1727[m
+[32m+[m[32m    print(format(num, '8.1f'), format(cube_root(num), '10.3f'))[m
+[32m+[m[32m    num = 1728[m
+[32m+[m[32m    print(format(num, '8.1f'), format(cube_root(num), '10.3f'))[m
+[32m+[m[32m    num = 1729[m
+[32m+[m[32m    print(format(num, '8.1f'), format(cube_root(num), '10.3f'))[m
+[32m+[m
+[32m+[m[32m    # Here are a couple of longer tables:[m
+[32m+[m[32m    show_table(0, 1000, 10)[m
+[32m+[m[32m    show_table(42875, 1000000, 20)[m
+[32m+[m
+[32m+[m[32m# This function shows a table of cube roots.[m
+[32m+[m[32m# The first two parameters are the minimum and maximum values for 'n'.[m
+[32m+[m[32m# The third parameter is the number of rows to show in the table.[m
+[32m+[m[32mdef show_table(minN, maxN, rows):[m
+[32m+[m[32m    # Calculate the step size.  There are (rows - 1) intervals:[m
+[32m+[m[32m    step = (maxN - minN) / (rows - 1.0)[m
+[32m+[m[41m    [m
+[32m+[m[32m    print('\n       n     cube_root(n)')  # print header row[m
+[32m+[m[41m    [m
+[32m+[m[32m    # Loop 'rows' times to print the rows in the table:[m
+[32m+[m[32m    for i in range(rows):[m
+[32m+[m[32m        n = minN + i * step  # calculate the value of 'n' for row 'i'[m
+[32m+[m[32m        print(format(n, '12.3f'), format(cube_root(n), '8.3f'))[m
+[32m+[m[41m [m
+[32m+[m
+[32m+[m[32m# Run the program[m
+[32m+[m[32mmain()[m
